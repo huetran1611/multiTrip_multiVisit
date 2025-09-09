@@ -1,0 +1,30 @@
+[
+    {
+        "speed_type": "low",
+        "range_type": "low",
+        "capacity [kg]": 2.27,
+        "FixedTime (s)": 350,
+        "V_max (m/s)": 15.6464
+    },
+    {
+        "speed_type": "low",
+        "range_type": "high",
+        "capacity [kg]": 2.27,
+        "FixedTime (s)": 700,
+        "V_max (m/s)": 15.6464
+    },
+    {
+        "speed_type": "high",
+        "range_type": "low",
+        "capacity [kg]": 2.27,
+        "FixedTime (s)": 350,
+        "V_max (m/s)": 31.2928
+    },
+    {
+        "speed_type": "high",
+        "range_type": "high",
+        "capacity [kg]": 2.27,
+        "FixedTime (s)": 700,
+        "V_max (m/s)": 31.2928
+    }
+]

@@ -1,0 +1,94 @@
+name: Lint
+
+on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
+jobs:
+  autopep8:
+    name: Run autopep8
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install autopep8
+        run: pip install -U autopep8
+
+      - name: Run autopep8
+        run: autopep8 --exit-code --diff -aaar .
+
+  mypy:
+    name: Run mypy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install mypy
+        run: pip install -U mypy
+
+      - name: Run mypy
+        run: mypy .
+
+  flake8:
+    name: Run flake8
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install flake8
+        run: pip install -U flake8
+
+      - name: Run flake8
+        run: flake8 .
+
+  rustfmt:
+    name: Run rustfmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Rust
+        run: curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- --default-toolchain=1.89 -y
+
+      - name: Setup Rust nightly
+        run: rustup toolchain install nightly
+
+      - name: Run rustfmt via cargo fmt
+        run: cargo +nightly fmt -- --check
+
+  clippy:
+    name: Run clippy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Rust
+        run: curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- --default-toolchain=1.89 -y
+
+      - name: Run clippy
+        run: cargo clippy --all-features --no-deps -- -D warnings
