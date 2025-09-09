@@ -93,7 +93,7 @@ jobs:
               customers=$(grep -oP "(?<=customers )\d+" $path)
               if [ $customers -le 500 ]
               then
-                execute "./min-timespan-delivery run $path --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                execute "./min-timespan-delivery run $path --single-truck-route --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
               fi
             done
           done
@@ -160,7 +160,7 @@ jobs:
             echo "RUN #$i"
             for path in $(find problems/data/${{ matrix.problem }}.txt)
             do
-              execute "./min-timespan-delivery run $path --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              execute "./min-timespan-delivery run $path --single-truck-route --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             done
           done
 
@@ -230,7 +230,7 @@ jobs:
               do
                 if [ $customers -le 100 ]
                 then
-                  execute "./min-timespan-delivery run $path --trucks-count $trucks --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  execute "./min-timespan-delivery run $path --single-truck-route --trucks-count $trucks --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                 fi
               done
             done
@@ -296,7 +296,7 @@ jobs:
             echo "RUN #$i"
             for path in $(find problems/data/200.*.txt)
             do
-              execute "./min-timespan-delivery run $path --trucks-count ${{ matrix.trucks-count }} --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              execute "./min-timespan-delivery run $path --single-truck-route --trucks-count ${{ matrix.trucks-count }} --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             done
           done
 
@@ -361,7 +361,7 @@ jobs:
             echo "RUN #$i"
             for path in $(find problems/data/${{ matrix.problem }}.txt)
             do
-              execute "./min-timespan-delivery run $path --trucks-count ${{ matrix.trucks-count }} --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              execute "./min-timespan-delivery run $path --single-truck-route --trucks-count ${{ matrix.trucks-count }} --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             done
           done
 
@@ -426,7 +426,7 @@ jobs:
             echo "RUN #$i"
             for path in $(find problems/data/${{ matrix.problem }}.txt)
             do
-              execute "./min-timespan-delivery run $path --trucks-count ${{ matrix.trucks-count }} --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              execute "./min-timespan-delivery run $path --single-truck-route --trucks-count ${{ matrix.trucks-count }} --disable-logging --extra ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             done
           done
 
